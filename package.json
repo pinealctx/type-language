@@ -1,8 +1,8 @@
 {
-  "name": "type-language",
-  "displayName": "Type Language",
-  "description": "Support for the Type Language in Visual Studio Code",
-  "version": "0.0.3",
+  "name": "frg-language",
+  "displayName": "Frg Language",
+  "description": "Support for the Frg Language in Visual Studio Code",
+  "version": "0.0.1",
   "icon": "images/favicon.ico",
   "engines": {
     "vscode": "^1.66.0"
@@ -11,10 +11,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:type-language.configuration.workspace",
-    "onLanguage:typelanguage"
-  ],
+  "activationEvents": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/pinealctx/vscode-type-language"
@@ -30,13 +27,13 @@
     ],
     "languages": [
       {
-        "id": "typelanguage",
+        "id": "frglanguage",
         "aliases": [
-          "Type language",
-          "typelanguage"
+          "Frg language",
+          "frglanguage"
         ],
         "extensions": [
-          ".tl"
+          ".frg"
         ],
         "configuration": "./language-configuration.json",
         "icon": {
@@ -47,19 +44,19 @@
     ],
     "grammars": [
       {
-        "language": "typelanguage",
-        "scopeName": "source.tl",
-        "path": "./syntaxes/typelanguage.tmLanguage.json"
+        "language": "frglanguage",
+        "scopeName": "source.frg",
+        "path": "./syntaxes/frglanguage.tmLanguage.json"
       }
     ],
     "configuration": {
       "type": "object",
-      "title": "Type Language Configuration",
+      "title": "Frg Language Configuration",
       "properties": {
         "type-language.workspace": {
           "type": "string",
           "default": "",
-          "description": "Type language workspace"
+          "description": "Frg language workspace"
         }
       }
     }

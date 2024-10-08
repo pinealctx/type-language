@@ -1,0 +1,198 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Frg language",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#params"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "(//)\\s*(summary):\\s*(.*)",
+          "captures": {
+            "1": { "name": "comment.line.double-slash" },
+            "2": { "name": "comment.block.documentation" },
+            "3": { "name": "comment.line.double-slash" }
+          }
+        },
+        {
+          "match": "^(//)(.*?)$",
+          "captures": {
+            "1": { "name": "comment.line.double-slash" },
+            "2": { "name": "comment.line.double-slash" }
+          }
+        },
+        {
+          "name": "comment.line.double-slash",
+          "begin": "//",
+          "end": "\n"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.frg",
+          "match": "^[-]{3}(syntax|type|service|import|info|attr|handler|post|get|returns)[-]{3}"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "match": "^(enum) (\\w*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "match": "\\s*(\\w*)\\s=\\s(.*?);",
+          "captures": {
+            "1": {
+              "name": "entity.name.type"
+            },
+            "2": {
+              "name": "entity.value"
+            }
+          }
+        },
+        {
+          "match": "^(type) (\\w*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "begin": "type",
+          "end": "}",
+          "beginCaptures": {
+            "0": {
+              "name": "entity.name.type"
+            }
+          },
+          "patterns": [
+            {
+              "match": "\\s*(\\w*)\\s*(\\w*)\\s*(`.*?`)?",
+              "captures": {
+                "1": {
+                  "name": "entity.name.type"
+                },
+                "2": {
+                  "name": "keyword.control.frg"
+                },
+                "3": {
+                  "name": "comment.line.double-slash"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "match": "^(attr)\\(",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            }
+          }
+        },
+        {
+          "match": "^(service) (\\w*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "match": "^(syntax) = (.*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "match": "^(import) \"(.*)\"",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "constant.character"
+            }
+          }
+        },
+        {
+          "match": "\\s*(\\w*):\\s*\"(\\w*)\"",
+          "captures": {
+            "1": {
+              "name": "entity.name.type"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "match": "\\s*@(handler)\\s*(\\w*)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            }
+          }
+        },
+        {
+          "match": "(post|get)\\s+(/[\\w/]+)[\\s+?]\\((\\w+)?\\)\\s+(returns)[\\s+?]\\((\\w+)?\\)",
+          "captures": {
+            "1": {
+              "name": "keyword.control.frg"
+            },
+            "2": {
+              "name": "entity.name.type"
+            },
+            "3": {
+              "name": "entity.name.type"
+            },
+            "4": {
+              "name": "keyword.control.frg"
+            },
+            "5": {
+              "name": "entity.name.type"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "scopeName": "source.frg"
+}
